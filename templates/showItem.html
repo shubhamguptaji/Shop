@@ -1,0 +1,23 @@
+
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+	<a href="{{url_for('newItem',categories_id=category.id)}}">Create a New Item</a>
+
+
+	{% for i in items %}
+	<span><h2>{{ i.name }}</h2></span>
+	<span class="float">{{i.price}}</span>
+	<p>{{i.description}}</p>
+	<p>{{i.seller_name}}</p>
+	<p>{{i.seller_phoneno}}</p>
+<p>{{i.seller_address}}</p>
+	<p><img src="{{ i.image }}" height="200" width="150"></p>
+	{% if username == i.seller_name %}
+	<p><a href="{{url_for('editItem',categories_id = category.id, items_id=i.id)}}">Edit</a></p>
+	<p><a href="{{url_for('deleteItem', categories_id=category.id, items_id=i.id)}}">Delete</a></p>
+	{% endif %}
+	{% endfor %}
+
+{% endblock %}

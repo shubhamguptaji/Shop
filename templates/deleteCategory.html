@@ -1,0 +1,9 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	<form action="#" method="POST">
+	<h2>Are you sure you want to delete {{category.name}}?</h2>
+	<button type="submit" id="submit">Delete</button>
+	<a href="{{url_for('categories')}}">Cancel</a>
+	</form>
+{% endblock %}

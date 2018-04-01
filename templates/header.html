@@ -1,0 +1,17 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+      <a class="navbar-brand active" href="{{url_for('categories')}}">SHOP</a>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#">Categories</a></li>
+<li>
+    <a href="{{url_for('newCategory')}}">Add category</a>
+</li>
+<li>
+    {% if 'username' in session %}
+    <a href="{{url_for('disconnect')}}">Logout</a>
+    {% else %}
+    <a href="{{url_for('login')}}">Login</a>
+    {% endif %}
+</li>
+  </div>
+</nav>

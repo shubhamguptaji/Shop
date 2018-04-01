@@ -1,0 +1,15 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	<h1>New Category</h1>
+	<form action="#" method="POST">
+		<label>Enter the name of the Category:</label>
+		<input type="text" name="name">
+		</br>
+		<label>Enter Image URL:</label>
+		<input type="text" name="image">
+		</br>
+		<button type="submit" value="create" id="submit">Create</button>
+		<a href="{{url_for('categories')}}">Cancel</a>
+	</form>
+{% endblock %}

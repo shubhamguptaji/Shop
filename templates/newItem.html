@@ -1,0 +1,23 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	<h1>New Item</h1>
+	<form action="#" method="post">
+		<label for="name">Name:</label>
+		<input type="text" maxlength="30" name="name" placeholder="Enter Item name">
+		<label for="description">Description:</label>
+		<input type="text" name="description" placeholder="Enter Item Description">
+		<label for="price">Price:</label>
+		<input type="text" name="price" placeholder="Enter Item Price">
+		<label for="image">Image:</label>
+		<input type="text" name="image" placeholder="Enter image url">
+		<label for="seller_name">Enter Seller Name:</label>
+		<input type="text" name="seller_name" placeholder="Enter seller's name">
+		<label for="seller_address">Enter Seller's Address:</label>
+		<input type="text" name="seller_address" placeholder="Enter Seller's Address">
+		<label for="seller_phoneno">Enter Seller Phone Number:</label>
+		<input type="text" name="seller_phoneno" placeholder="9999988888">
+		<button type="submit" id="submit">Create</button>
+		<a href="{{url_for('showItem', categories_id=categories_id)}}">Cancel</a>
+	</form>
+{% endblock %}

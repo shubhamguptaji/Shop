@@ -1,0 +1,22 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+</br></br></br>
+	<h1>Edit {{ category.name }}</h1>
+	{% if username == "sg036206@gmail.com" %}
+	<form action="{{url_for('editCategory', categories_id=categories_id, category=category)}}" method="post">
+		<label>Enter name:</label>
+		<input type="text" name="name" placeholder="{{category.name}}">
+	</br>
+	<label>Enter image url:</label>
+	<input name="image" type="text" value="Enter image url">
+	<button type="Submit">Change</button>
+	</form>
+	<a href="{{url_for('categories')}}">Cancel</a>
+	{% endif %}
+	{% if username != "sg036206@gmail.com" %}
+	<p>You are not allowed to edit the category</p>
+	{% endif %}
+
+
+{% endblock %}

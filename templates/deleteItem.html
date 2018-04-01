@@ -1,0 +1,10 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+	<h3>Are you sure you want to Delete {{item.name}}? </h3>
+	<form action="#" method="post">
+	<button type="Submit" value="Delete">Delete</button>
+	<a href="{{url_for('categories')}}">Cancel</a>
+	</form>
+{% endblock %}
