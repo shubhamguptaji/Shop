@@ -7,8 +7,8 @@ import sys
 
 Base = declarative_base()
 
-class Users(Base):
-	__tablename__ = 'User'
+class User(Base):
+	__tablename__ = 'user'
 
 	id = Column(Integer, primary_key=True)
 	name = Column(String(250), nullable=False)
@@ -25,14 +25,14 @@ class Users(Base):
 		'picture' : self.picture,
 		}
 
-class Category(Base):
-	__tablename__ = 'Categories'
+class Categories(Base):
+	__tablename__ = 'categories'
 
 	id = Column(Integer, primary_key=True)
 	name = Column(String(250), nullable=False)
 	image = Column(String(250), nullable=False)
-	user_id = Column(Integer, ForeignKey('User.id'))
-	user = relationship(Users)
+	user_id = Column(Integer, ForeignKey('user.id'))
+	user = relationship(User)
 
 	@property
 	def serialize(self):
@@ -42,8 +42,8 @@ class Category(Base):
 		'id' : self.id,
 		}
 
-class Item(Base):
-	__tablename__ = 'Items'
+class Items(Base):
+	__tablename__ = 'items'
 
 	name = Column(String(100), nullable=False)
 	id = Column(Integer, primary_key=True)
@@ -52,11 +52,11 @@ class Item(Base):
 	image = Column(String(300))
 	seller_name = Column(String(30), nullable=False)
 	seller_address = Column(String(200), nullable=False)
-	seller_phoneno = Column(Integer, nullable=False)
-	categories_id = Column(Integer, ForeignKey('Categories.id'))
-	categories = relationship(Category)
-	user_id = Column(Integer, ForeignKey('User.id'))
-	user = relationship(Users)
+	seller_phoneno = Column(String, nullable=False)
+	categories_id = Column(Integer, ForeignKey('categories.id'))
+	categories = relationship(Categories)
+	user_id = Column(Integer, ForeignKey('user.id'))
+	user = relationship(User)
 
 
 	@property
@@ -74,6 +74,6 @@ class Item(Base):
 		}
 		
 engine = create_engine(
-	'postgresql://guptaji:shop@localhost/shopdata')
+	'postgres://guptaji:shop@localhost/shopdata')
 
 Base.metadata.create_all(engine)
